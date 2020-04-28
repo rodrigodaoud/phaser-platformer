@@ -5,6 +5,10 @@
   "repository": "git@github.com:rodrigodaoud/phaser-platformer.git",
   "author": "Rodrigo <rodaoud93@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "dev": "webpack-dev-server",
+    "build": "webpack"
+  },
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.9.5",
