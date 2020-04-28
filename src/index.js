@@ -4,6 +4,7 @@ import BootScene from './scenes/BootScene';
 import GameScene from './scenes/GameScene';
 import TitleScene from './scenes/TitleScene';
 import EndScene from './scenes/EndScene';
+import WinnerScene from './scenes/WinnerScene';
 
 const gameConfig = {
     type: Phaser.WEBGL,
@@ -16,14 +17,15 @@ const gameConfig = {
             gravity: {
                 y: 800
             },
-            debug: true
+            debug: false
         }
     },
     scene: [
         BootScene,
         TitleScene,
         GameScene,
-        EndScene
+        EndScene,
+        WinnerScene
     ]
 };
 

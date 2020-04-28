@@ -21,4 +21,15 @@ export default function makeAnimations(scene) {
         frames: [{ key: 'player', frame: 'platformchar_jump' }],
         frameRate: 10
     });
+
+    scene.anims.create({
+        key: 'enemy_walk',
+        frames: scene.anims.generateFrameNames('enemy', {
+            prefix: 'zombie_walk_',
+            start: 1,
+            end: 2,
+        }),
+        frameRate: 10,
+        repeat: -1
+    })
 }

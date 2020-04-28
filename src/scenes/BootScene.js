@@ -32,6 +32,7 @@ class BootScene extends Phaser.Scene {
         this.load.tilemapTiledJSON('map', 'assets/world/phaser_platformer_map.json');
 
         this.load.atlas('player', 'assets/character/character.png', 'assets/character/character_atlas.json');
+        this.load.atlas('enemy', 'assets/enemy/enemy.png', 'assets/enemy/enemy_atlas.json');
 
         this.load.bitmapFont('font', 'assets/fonts/font.png', 'assets/fonts/font.fnt');
 

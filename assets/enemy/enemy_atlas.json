@@ -40,7 +40,7 @@
             }
         },
         {
-            "filename": "zombie_walk2",
+            "filename": "zombie_walk_2",
             "frame": {
                 "w": 80,
                 "h": 110,
@@ -53,7 +53,7 @@
             }
         },
         {
-            "filename": "zombie_walk1",
+            "filename": "zombie_walk_1",
             "frame": {
                 "w": 80,
                 "h": 110,

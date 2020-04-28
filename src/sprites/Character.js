@@ -7,7 +7,6 @@ export default class Character extends Phaser.GameObjects.Sprite {
     }
 
     update(keys) {
-
         if (keys.left.isDown && this.body.x <= 0) {
             this.body.x = 0;
         } else if (keys.right.isDown && this.body.x >= 6400) {

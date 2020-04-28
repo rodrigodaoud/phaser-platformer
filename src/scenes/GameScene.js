@@ -1,5 +1,7 @@
 
 import Character from '../sprites/Character';
+import Enemy from '../sprites/Enemy';
+import Enemies from '../helpers/enemies';
 
 class GameScene extends Phaser.Scene {
     constructor() {
@@ -10,27 +12,31 @@ class GameScene extends Phaser.Scene {
         this.cameras.main.setBounds(0, 0, 6400, 600);
         this.cameras.main.setBackgroundColor('rgba(162, 240, 240, 1)');
 
-        this.load.image('spike', 'assets/world/spike.png');
-
         const map = this.make.tilemap({ key: 'map' });
         const tileset = map.addTilesetImage('phaser_platformer', 'tiles');
-        const platform = map.createStaticLayer('world', tileset, 0, -660);
-        const decorations = map.createStaticLayer('decoration', tileset, 0, -660);
-        const water = map.createStaticLayer('water', tileset, 0, -660);
-        const spikeObjects = map.getObjectLayer('spikes')['objects'];
+        const platform = map.createStaticLayer('world', tileset, 0, -20);
+        const decorations = map.createStaticLayer('decoration', tileset, 0, -20);
+        const water = map.createStaticLayer('water', tileset, 0, -20);
         const coinObjects = map.getObjectLayer('coins')['objects'];
 
         this.coins = this.physics.add.staticGroup();
-        this.spikes = this.physics.add.staticGroup();
+        this.enemies = this.physics.add.group();
 
         coinObjects.forEach(object => {
-            let obj = this.coins.create(object.x, object.y - 720, 'coin').setOrigin(0, 0);
+            let obj = this.coins.create(object.x, object.y - 80, 'coin').setOrigin(0, 0);
             obj.setSize(object.width, object.height).setOffset(48, 48);
         });
 
-        spikeObjects.forEach(object => {
-            let obj = this.spikes.create(object.x, object.y - 720, 'spike').setOrigin(0, 0);
-            obj.setSize(object.width + 32, object.height).setOffset(32 , 64);
+        Enemies.positions.forEach(enemy => {
+            let enemyObject;
+            enemyObject = new Enemy({
+                scene: this,
+                key: 'enemy',
+                x: enemy.x,
+                y: enemy.y,
+                frame: 'zombie_idle'
+            });
+            this.enemies.add(enemyObject);
         });
 
         this.player = new Character({
@@ -51,8 +57,9 @@ class GameScene extends Phaser.Scene {
         platform.setCollisionByExclusion(-1, true);
 
         this.physics.add.collider(this.player, platform);
+        this.physics.add.collider(this.enemies, platform);
+        this.physics.add.collider(this.player, this.enemies, this.player.playerHit, null, this);
         this.physics.add.collider(this.player, this.coins, this.collectCoin, null, this);
-        this.physics.add.collider(this.player, this.spikes, this.player.playerHit, null, this);
 
         this.keys = this.input.keyboard.createCursorKeys();
 
@@ -68,6 +75,15 @@ class GameScene extends Phaser.Scene {
 
     update() {
         this.player.update(this.keys);
+
+        this.enemies.children.entries.forEach((sprite) => {
+            sprite.update();
+        });
+
+        if (this.coinScore >= 20) {
+            this.scene.stop('GameScene');
+            this.scene.start('WinnerScene');
+        }
     }
 }
 
