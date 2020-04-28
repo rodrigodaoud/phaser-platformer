@@ -8,7 +8,8 @@
   "scripts": {
     "dev": "webpack-dev-server --config webpack.config.dev.js",
     "build-prd": "webpack --config webpack.config.prd.js",
-    "build-dev": "webpack --config webpack.config.dev.js"
+    "build-dev": "webpack --config webpack.config.dev.js",
+    "start": "node server.js"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
@@ -25,5 +26,9 @@
   "dependencies": {
     "express": "^4.17.1",
     "phaser": "^3.22.0"
+  },
+  "engines": {
+    "node": "10.13.0",
+    "npm": "6.4.1"
   }
 }
