@@ -6,8 +6,9 @@
   "author": "Rodrigo <rodaoud93@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack-dev-server",
-    "build": "webpack"
+    "dev": "webpack-dev-server --config webpack.config.dev.js",
+    "build-prd": "webpack --config webpack.config.prd.js",
+    "build-dev": "webpack --config webpack.config.dev.js"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
@@ -22,6 +23,7 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
+    "express": "^4.17.1",
     "phaser": "^3.22.0"
   }
 }
