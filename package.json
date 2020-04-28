@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "webpack-dev-server --config webpack.config.dev.js",
-    "heroku-postbuild": "webpack --config webpack.config.prod.js",
+    "heroku-postbuild": "webpack --config webpack.config.prd.js",
     "build-dev": "webpack --config webpack.config.dev.js",
     "start": "node server.js"
   },
