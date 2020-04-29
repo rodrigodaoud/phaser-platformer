@@ -42,12 +42,6 @@ export default class Character extends Phaser.GameObjects.Sprite {
         }
     }
 
-    saveLocation() {
-        if (this.body.x >= 2930) {
-            localStorage.setItem('positionX', 2930);
-        }
-    }
-
     playerHit() {
         this.scene.stop('GameScene');
         this.scene.start('EndScene');

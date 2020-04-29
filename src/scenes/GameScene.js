@@ -70,7 +70,9 @@ class GameScene extends Phaser.Scene {
         coin.destroy(coin.x, coin.y);
         this.coinScore ++;
         this.text.setText(`Coins: ${this.coinScore}`);
-        localStorage.setItem('score', this.coinScore);
+        if (this.player.body.x >= 2800 && this.player.body.x <= 3000) {
+            localStorage.setItem('score', this.coinScore);
+        }
     }
 
     update() {
@@ -78,8 +80,12 @@ class GameScene extends Phaser.Scene {
             this.scene.stop('GameScene');
             this.scene.start('EndScene');
         }
+
+        if (this.player.body.x >= 2930) {
+            localStorage.setItem('positionX', 2930);
+        }
+
         this.player.update(this.keys);
-        this.player.saveLocation();
 
         this.enemies.children.entries.forEach((sprite) => {
             sprite.update();
