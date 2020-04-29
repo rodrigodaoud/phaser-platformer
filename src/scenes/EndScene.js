@@ -19,8 +19,9 @@ class EndScene extends Phaser.Scene {
         this.time.addEvent({ 
             delay: 2000,
             callback: () => {
-                this.scene.stop('GameScene');
+                this.scene.stop('EndScene');
                 this.scene.start('TitleScene');
+                localStorage.setItem('positionX', 50);
             },
             callbackScope: this,
             loop: true

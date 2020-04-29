@@ -25,7 +25,6 @@ class BootScene extends Phaser.Scene {
             this.scene.start('TitleScene');
         });
 
-        this.load.image('background_image', 'assets/background.png');
         this.load.image('spike', 'assets/world/spike.png');
         this.load.image('coin', 'assets/world/coin.png');
         this.load.image('tiles', 'assets/world/platformPack_tilesheet.png');
